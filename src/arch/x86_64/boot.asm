@@ -10,6 +10,7 @@ bits 32
 start:
 	; stack top is used since stack grows downwards (push subtracts, pop adds)
 	mov esp, stack_top
+	mov edi, ebx	; move Multiboot info pointer to edi
 
 	; various checks
 	call check_multiboot
@@ -164,7 +165,7 @@ PDP:
 PD:
 	resb 4096
 stack_bottom:
-	resb 64
+	resb 4096 * 4
 stack_top:
 
 ; read-only data

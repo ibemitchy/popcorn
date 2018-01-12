@@ -15,7 +15,7 @@ header_start:
 	dd 0x100000000 - (0xE85250D6 + 0x0 + (header_end - header_start))
 
 	;required end tags
-	dw 0x0		;type
-	dw 0x0		;flags
+	dw 0x0	;type
+	dw 0x0	;flags
 	dd 0x8	;size
 header_end:

@@ -9,11 +9,20 @@ SECTIONS {
 
 	.boot :
 	{
-		*(.multiboot_header) /* GRUB expects multiboot header near beginning of file */
+		/* *(.multiboot_header) GRUB expects multiboot header near beginning of file */
+		KEEP(*(.multiboot_header)) /* KEEP tells linker to keep multiboot header */
 	}
 
 	.text :
 	{
-		*(.text) /* all input sections named .text */
+		*(.text .text.*) /* all input sections named .text */
 	}
+
+	.rodata : {
+        *(.rodata .rodata.*)
+    }
+
+    .data.rel.ro : {
+        *(.data.rel.ro.local*) *(.data.rel.ro .data.rel.ro.*)
+    }
 }
